@@ -6,7 +6,7 @@ using RL.Data.DataModels;
 namespace RL.Backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Users")]
 public class UsersController : ControllerBase
 {
     private readonly ILogger<UsersController> _logger;
@@ -24,4 +24,5 @@ public class UsersController : ControllerBase
     {
         return _context.Users;
     }
+
 }

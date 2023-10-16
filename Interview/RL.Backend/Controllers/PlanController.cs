@@ -10,7 +10,7 @@ using RL.Data.DataModels;
 namespace RL.Backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Plan")]
 public class PlanController : ControllerBase
 {
     private readonly ILogger<PlanController> _logger;
@@ -20,11 +20,11 @@ public class PlanController : ControllerBase
     public PlanController(ILogger<PlanController> logger, RLContext context, IMediator mediator)
     {
         _logger = logger;
-        _context = context ?? throw new ArgumentNullException(nameof(context));
-        _mediator = mediator ?? throw new ArgumentNullException(nameof(mediator));
+        _context = context;
+        _mediator = mediator;
     }
 
-    [HttpGet]
+   
     [EnableQuery]
     public IEnumerable<Plan> Get()
     {
@@ -32,7 +32,8 @@ public class PlanController : ControllerBase
     }
 
     [HttpPost]
-    public async Task<IActionResult> PostPlan(CreatePlanCommand command, CancellationToken token)
+    
+    public async Task<IActionResult> PostPlan([FromBody]CreatePlanCommand command, CancellationToken token)
     {
         var response = await _mediator.Send(command, token);
 
@@ -41,6 +42,14 @@ public class PlanController : ControllerBase
 
     [HttpPost("AddProcedureToPlan")]
     public async Task<IActionResult> AddProcedureToPlan(AddProcedureToPlanCommand command, CancellationToken token)
+    {
+        var response = await _mediator.Send(command, token);
+
+        return response.ToActionResult();
+    }
+
+    [HttpPost("AddUserToProcedure")]
+    public async Task<IActionResult> AddUserToProcedure(AddUserToProcedureCommand command, CancellationToken token)
     {
         var response = await _mediator.Send(command, token);
 

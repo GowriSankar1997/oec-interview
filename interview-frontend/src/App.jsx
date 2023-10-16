@@ -7,7 +7,7 @@ const App = () => {
 
     const start = async () => {
         var plan = await startPlan();
-        navigate(`/plan/${plan.planId}`);
+        navigate(`/plan/1`);//${plan.planId}
     };
 
     return (

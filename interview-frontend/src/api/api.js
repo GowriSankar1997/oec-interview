@@ -1,12 +1,13 @@
-const api_url = "http://localhost:10010";
+const api_url = "https://localhost:44343";
 
 export const startPlan = async () => {
     const url = `${api_url}/Plan`;
     const response = await fetch(url, {
-        method: "POST",
+         method: "POST",
         headers: {
-            Accept: "application/json",
-            "Content-Type": "application/json",
+            Accept: "application/json",            
+            "Content-Type": "application/json"
+          
         },
         body: JSON.stringify({}),
     });
@@ -18,7 +19,7 @@ export const startPlan = async () => {
 
 export const addProcedureToPlan = async (planId, procedureId) => {
     const url = `${api_url}/Plan/AddProcedureToPlan`;
-    var command = { planId: planId, procedureId: procedureId };
+    var command = { planId: planId, procedureId: procedureId};
     const response = await fetch(url, {
         method: "POST",
         headers: {
@@ -64,4 +65,21 @@ export const getUsers = async () => {
     if (!response.ok) throw new Error("Failed to get users");
 
     return await response.json();
+};
+
+export const adduserToProcedure = async (planId, procedureId, userId) => {
+    const url = `${api_url}/Plan/AddUserToProcedure`;
+    var command = { planId: planId, procedureId: procedureId ,userId : userId};
+    const response = await fetch(url, {
+        method: "POST",
+        headers: {
+            Accept: "application/json",
+            "Content-Type": "application/json",
+        },
+        body: JSON.stringify(command),
+    });
+
+    if (!response.ok) throw new Error("Failed to create plan");
+
+    return true;
 };

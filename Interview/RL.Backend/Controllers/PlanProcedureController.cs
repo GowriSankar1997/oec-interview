@@ -1,12 +1,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.OData.Query;
+using Newtonsoft.Json;
 using RL.Data;
 using RL.Data.DataModels;
 
 namespace RL.Backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("PlanProcedure")]
 public class PlanProcedureController : ControllerBase
 {
     private readonly ILogger<PlanProcedureController> _logger;

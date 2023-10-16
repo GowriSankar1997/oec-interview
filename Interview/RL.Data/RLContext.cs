@@ -16,12 +16,13 @@ public class RLContext : DbContext
     protected override async void OnModelCreating(ModelBuilder builder)
     {
         base.OnModelCreating(builder);
-
+       
         builder.Entity<PlanProcedure>(typeBuilder =>
         {
             typeBuilder.HasKey(pp => new { pp.PlanId, pp.ProcedureId });
             typeBuilder.HasOne(pp => pp.Plan).WithMany(p => p.PlanProcedures);
             typeBuilder.HasOne(pp => pp.Procedure).WithMany();
+            //typeBuilder.HasOne(pp => pp.userList);
         });
 
         //Add procedure Seed Data

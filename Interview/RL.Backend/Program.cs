@@ -11,6 +11,7 @@ builder.Services.AddSqlite<RLContext>("Data Source=Database.db");
 builder.Services.AddControllers()
     .AddOData(options => options.Select().Filter().Expand().OrderBy())
     .AddJsonOptions(options => options.JsonSerializerOptions.DictionaryKeyPolicy = JsonNamingPolicy.CamelCase);
+
 // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
 builder.Services.AddEndpointsApiExplorer();
 builder.Services.AddSwaggerGen(c =>
@@ -23,7 +24,7 @@ builder.Services.AddCors(options =>
     options.AddPolicy(name: corsPolicy,
     policy =>
     {
-        policy.WithOrigins("http://localhost:3001").AllowAnyHeader().AllowAnyMethod();
+        policy.WithOrigins("http://localhost:3000").AllowAnyHeader().AllowAnyMethod();
     });
 });
 

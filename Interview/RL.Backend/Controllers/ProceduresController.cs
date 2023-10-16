@@ -6,7 +6,7 @@ using RL.Data.DataModels;
 namespace RL.Backend.Controllers;
 
 [ApiController]
-[Route("[controller]")]
+[Route("Procedures")]
 public class ProceduresController : ControllerBase
 {
     private readonly ILogger<ProceduresController> _logger;

@@ -72,6 +72,7 @@ const Plan = () => {
                           procedure={p}
                           handleAddProcedureToPlan={handleAddProcedureToPlan}
                           planProcedures={planProcedures}
+                          
                         />
                       ))}
                     </div>
@@ -84,6 +85,8 @@ const Plan = () => {
                           key={p.procedure.procedureId}
                           procedure={p.procedure}
                           users={users}
+                          Userlist={p.userList}
+                          PlanId={p.planId}
                         />
                       ))}
                     </div>
